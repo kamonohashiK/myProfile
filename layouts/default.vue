@@ -23,13 +23,12 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
-      :clipped-left="clipped"
       fixed
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="title" @click="dialog = !dialog"/>
       <v-spacer />
     </v-app-bar>
     <v-content>
@@ -50,6 +49,17 @@
       <span>&copy; 2019</span>
     <v-spacer />
     </v-footer>
+
+    <v-dialog v-model="dialog" persistent max-width="400">
+      <v-card>
+        <v-card-title class="headline">あなたのスマホでも見てね。</v-card-title>
+        <v-img src="/qr.png"></v-img>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" text @click="dialog = false">閉じる</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -70,7 +80,8 @@ export default {
           to: '/islands'
         },
       ],
-      title: 'かも屋'
+      title: 'かも屋',
+      dialog: false,
     }
   }
 }

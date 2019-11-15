@@ -4,8 +4,9 @@
       <v-img src="/island.jpg" aspect-ratio="1" width="580" height="360"></v-img>
       <div class="text-center">
         <h2>離島が好き。</h2>
-        <p>海とひとりきりの時間が好きなので。</p>
+        <p>海とひとりきりの時間が好き。</p>
 
+        <h2>なので作りました。</h2>
         <h3>しまの時刻表</h3>
         <a href="http://shimajikoku.com" target="_blank" rel="noopener noreferrer">
           <v-img src="/jikoku.png" aspect-ratio="1" width="580" height="240"></v-img>
