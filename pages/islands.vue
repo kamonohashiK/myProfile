@@ -11,7 +11,7 @@
         <a href="http://shimajikoku.com" target="_blank" rel="noopener noreferrer">
           <v-img src="/jikoku.png" aspect-ratio="1" width="580" height="240"></v-img>
         </a>
-        <p>離島行き航路の時刻表・運賃を気軽に検索できるWebサイト。</p>
+        <p style="margin-top:10px;">離島行き航路の時刻表・運賃を気軽に検索できるWebサイト。</p>
       </div>
     </v-flex>
   </v-layout>
