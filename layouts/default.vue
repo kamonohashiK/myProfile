@@ -77,6 +77,11 @@ export default {
           icon: "mdi-ferry",
           title: "Islands",
           to: "/islands"
+        },
+        {
+          icon: "mdi-robot",
+          title: "ChatBot",
+          to: "/bot"
         }
       ],
       title: "かも屋",
