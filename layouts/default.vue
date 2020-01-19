@@ -100,4 +100,8 @@ export default {
 a {
   text-decoration: none;
 }
+
+.v-btn {
+  margin: 20px;
+}
 </style>
