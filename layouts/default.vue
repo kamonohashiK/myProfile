@@ -82,6 +82,11 @@ export default {
           icon: "mdi-robot",
           title: "ChatBot",
           to: "/bot"
+        },
+        {
+          icon: "mdi-file-document-outline",
+          title: "Docs",
+          to: "/docs"
         }
       ],
       title: "かも屋",
