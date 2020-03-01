@@ -83,11 +83,6 @@ export default {
           title: "ChatBot",
           to: "/bot"
         },
-        {
-          icon: "mdi-file-document-outline",
-          title: "Docs",
-          to: "/docs"
-        }
       ],
       title: "かも屋",
       dialog: false
