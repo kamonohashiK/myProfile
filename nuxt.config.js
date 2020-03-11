@@ -1,5 +1,4 @@
 import colors from 'vuetify/es5/util/colors'
-import hljs from 'highlight.js'
 
 export default {
   mode: 'spa',
@@ -37,7 +36,6 @@ export default {
    ** Global CSS
    */
   css: [
-    { src: '~/node_modules/highlight.js/styles/rainbow.css', lang: 'css' },
   ],
   /*
    ** Plugins to load before mounting the App
@@ -88,30 +86,6 @@ export default {
    */
   build: {
     extend(config, _ctx) {
-      config.module.rules.push({
-        test: /\.md$/,
-        loader: 'frontmatter-markdown-loader',
-        options: {
-          markdownIt: {
-            html: true,
-            linkify: true,
-            breaks: true,
-
-            // ソースハイライトするためにhighlight.jsと連携
-            highlight(str, lang) {
-              if (lang && hljs.getLanguage(lang)) {
-                try {
-                  return hljs.highlight(lang, str).value
-                } catch (e) {
-                  console.error(e)
-                }
-              }
-
-              return '' // use external default escaping
-            }
-          }
-        }
-      })
     }
   }
 }

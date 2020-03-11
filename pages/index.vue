@@ -6,7 +6,7 @@
           <img src="/kamo.png" alt="John" />
         </v-avatar>
         <h1>Kouki Kadoya</h1>
-        <h3>そろそろ自分の武器が欲しい</h3>
+        <h3>無駄なことをするために<br>無駄なことをなくしたい</h3>
         <p>AWS / Python / Nuxt.js</p>
         <div class="align-center">
           <a href="https://twitter.com/platypus_k86" target="_blank">
