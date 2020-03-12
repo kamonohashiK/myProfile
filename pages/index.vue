@@ -1,41 +1,32 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <v-avatar size="220">
-          <img src="/kamo.png" alt="John" />
-        </v-avatar>
-        <h1>Kouki Kadoya</h1>
-        <h3>無駄なことをするために<br>無駄なことをなくしたい</h3>
-        <p>AWS / Python / Nuxt.js</p>
-        <div class="align-center">
-          <a href="https://twitter.com/platypus_k86" target="_blank">
-            <v-avatar size="64">
-              <img src="/Twitter.png" alt="John" />
-            </v-avatar>
-          </a>
-          <a href="https://www.facebook.com/kouki.kadoya" target="_blank">
-            <v-avatar size="64">
-              <img src="/Facebook.png" alt="John" />
-            </v-avatar>
-          </a>
-          <a href="https://github.com/kamonohashiK" target="_blank">
-            <v-avatar size="64">
-              <img src="/Github.png" alt="John" />
-            </v-avatar>
-          </a>
-        </div>
-      </div>
+      <Top />
+      <Catch />
+      <Skill />
+      <Portfolio />
+      <Hobbies />
+      <!--<Contact />-->
     </v-flex>
   </v-layout>
 </template>
 
-<style>
-.v-avatar {
-  margin: 10px;
-}
+<script>
+import Top from "~/components/Top.vue";
+import Catch from "~/components/Catch.vue";
+import Skill from "~/components/Skill.vue";
+import Portfolio from "~/components/Portfolio.vue"
+import Hobbies from "~/components/Hobbies.vue"
+import Contact from "~/components/Contact.vue"
 
-p {
-  margin: 10px 0;
-}
-</style>
+export default {
+  components: {
+    Top,
+    Catch,
+    Skill,
+    Portfolio,
+    Hobbies,
+    Contact
+  }
+};
+</script>
