@@ -35,30 +35,28 @@ export default {
         {
           icon: "mdi-apps",
           title: "トップ",
-          to: "#top"
+          to: "/#top"
         },
         {
-          icon: "mdi-chart-bubble",
+          icon: "mdi-file-document-outline",
+          title: "ドキュメント",
+          to: "/docs"
+        },
+        {
+          icon: "mdi-laptop",
           title: "スキル",
-          to: "#skills"
+          to: "/#skills"
         },
         {
-          icon: "mdi-chart-bubble",
+          icon: "mdi-application",
           title: "ポートフォリオ",
-          to: "#portfolio"
+          to: "/#portfolio"
         },
         {
           icon: "mdi-chart-bubble",
           title: "趣味",
-          to: "#hobbies"
+          to: "/#hobbies"
         },
-        /*
-        {
-          icon: "mdi-chart-bubble",
-          title: "お問い合わせ",
-          to: "#contact"
-        }
-        */
       ],
       title: "かも屋のポートフォリオ"
     };
