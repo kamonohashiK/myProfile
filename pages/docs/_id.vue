@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <h2>{{ doc.title }}</h2>
-	<p>{{doc.createdAt}}</p>
+	<p>{{ $moment(doc.createdAt) | moment }}</p>
     <div>
       <v-chip v-for="tag in doc.tags" :key="tag.id" class="ma-2">
         {{ tag.tag_name }}

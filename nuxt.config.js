@@ -43,7 +43,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/moment-filter', ssr: false }
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -57,6 +59,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    ['@nuxtjs/moment', ['ja']],
   ],
   /*
    ** Axios module configuration
