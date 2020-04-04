@@ -52,11 +52,13 @@ export default {
           title: "趣味",
           to: "#hobbies"
         },
+        /*
         {
           icon: "mdi-chart-bubble",
           title: "お問い合わせ",
           to: "#contact"
         }
+        */
       ],
       title: "かも屋のポートフォリオ"
     };
