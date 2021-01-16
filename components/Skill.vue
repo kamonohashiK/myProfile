@@ -12,10 +12,6 @@
               <p v-html="skill.description" class="text--primary"></p>
             </v-list-item-content>
           </v-list-item>
-          <v-card-actions>
-            <v-spacer />
-            <v-rating length="3" v-model="skill.rating"></v-rating>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -30,34 +26,27 @@ export default {
       skills: [
         {
           title: "PHP",
-          description:
-            "Laravel, CakePHP等を用いた<br>Webアプリの設計・開発",
-          rating: 2
-        },
-        {
-          title: "Scala",
-          description:
-            "Play Frameworkを用いた<br>Webアプリの開発・保守",
-          rating: 1
+          description: "Laravel, CakePHP等を用いた<br>Webアプリの設計・開発",
+          rating: 2,
         },
         {
           title: "Vue.js",
           description: "Nuxt.jsを用いた<br>SPAの設計・開発",
-          rating: 2
+          rating: 2,
         },
         {
           title: "Python",
           description: "サーバレスアプリの<br>関数部分等で使用",
-          rating: 2
+          rating: 2,
         },
         {
           title: "AWS",
           description:
             "Lambda, DynamoDB等を用いた<br>サーバレスアプリの設計・開発",
-          rating: 1
-        }
-      ]
+          rating: 1,
+        },
+      ],
     };
-  }
+  },
 };
 </script>

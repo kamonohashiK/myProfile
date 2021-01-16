@@ -35,31 +35,26 @@ export default {
         {
           icon: "mdi-apps",
           title: "トップ",
-          to: "/#top"
-        },
-        {
-          icon: "mdi-file-document-outline",
-          title: "ドキュメント",
-          to: "/docs"
+          to: "/#top",
         },
         {
           icon: "mdi-laptop",
           title: "スキル",
-          to: "/#skills"
+          to: "/#skills",
         },
         {
           icon: "mdi-application",
           title: "ポートフォリオ",
-          to: "/#portfolio"
+          to: "/#portfolio",
         },
         {
           icon: "mdi-chart-bubble",
           title: "趣味",
-          to: "/#hobbies"
+          to: "/#hobbies",
         },
       ],
-      title: "かも屋のポートフォリオ"
+      title: "kamoy4.com",
     };
-  }
+  },
 };
 </script>

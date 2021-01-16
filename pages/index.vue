@@ -6,7 +6,6 @@
       <Skill />
       <Portfolio />
       <Hobbies />
-      <!--<Contact />-->
     </v-flex>
   </v-layout>
 </template>
@@ -15,9 +14,8 @@
 import Top from "~/components/Top.vue";
 import Catch from "~/components/Catch.vue";
 import Skill from "~/components/Skill.vue";
-import Portfolio from "~/components/Portfolio.vue"
-import Hobbies from "~/components/Hobbies.vue"
-import Contact from "~/components/Contact.vue"
+import Portfolio from "~/components/Portfolio.vue";
+import Hobbies from "~/components/Hobbies.vue";
 
 export default {
   components: {
@@ -26,7 +24,6 @@ export default {
     Skill,
     Portfolio,
     Hobbies,
-    Contact
-  }
+  },
 };
 </script>
