@@ -52,6 +52,7 @@
 <script>
 import yamanote from "@/assets/json/yamanote.json";
 import todofuken from "@/assets/json/todofuken.json";
+import seiza from "@/assets/json/seiza.json";
 import gojuon from "@/assets/json/gojuon.json";
 
 export default {
@@ -60,6 +61,7 @@ export default {
       themes: [
         { file: yamanote, label: "山手線の駅名" },
         { file: todofuken, label: "日本の都道府県" },
+        { file: seiza, label: "88星座" },
       ],
       origin_answers: [],
       answers: [],
