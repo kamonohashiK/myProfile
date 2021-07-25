@@ -21,11 +21,12 @@
 
 <script>
 import yamanote from '@/assets/json/yamanote.json'
+import todofuken from '@/assets/json/todofuken.json'
 
 export default {
   data() {
     return {
-      themes: yamanote,
+      themes: todofuken,
       words: [
         "あ",
         "い",
