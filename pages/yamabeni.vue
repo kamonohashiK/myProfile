@@ -9,11 +9,21 @@
           v-model="answer"
           @change="pushAnswer"
         />
-        <p v-if="error_message" style="color: red">{{ error_message }}</p>
+        <p v-if="success_message" style="color: #43a047; font-size: 24px">
+          ◯{{ success_message }}
+        </p>
+        <p v-if="error_message" style="color: #b71c1c; font-size: 18px">
+          {{ error_message }}
+        </p>
         <br />
         <p>残り{{ restWords.length }}個</p>
         <b>禁止ワード</b><br />
-        <span v-for="(b, idx) in banned_words" :key="idx">{{ b }}　</span>
+        <span
+          v-for="(b, idx) in banned_words"
+          :key="idx"
+          style="font-size: 24px"
+          >{{ b }}　</span
+        >
 
         <br /><v-btn style="margin: 20px" @click="surrender">降参</v-btn>
       </template>
@@ -31,8 +41,11 @@
 
       <p class="text-h5 mb-3">遊び方</p>
       <p class="text-justify">
-        「山手線ゲーム」と筒井康隆の小説「<a target="_blank" href="https://www.amazon.co.jp/gp/product/B07CMZZNPW/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07CMZZNPW&linkCode=as2&tag=kamonohashi0f-22&linkId=00260c4d6b008e43036e7223b3d3025d">残像に口紅を</a>」を組み合わせたオリジナルゲームです。
-        <br /><br />
+        「山手線ゲーム」と筒井康隆の小説「<a
+          target="_blank"
+          href="https://www.amazon.co.jp/gp/product/B07CMZZNPW/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07CMZZNPW&linkCode=as2&tag=kamonohashi0f-22&linkId=00260c4d6b008e43036e7223b3d3025d"
+          >残像に口紅を</a
+        >」を組み合わせたオリジナルゲームです。 <br /><br />
         1. 遊びたいテーマを選択してください。
         <br /><br />
         2. ゲームが進むたびに「禁止ワード」が1つ追加されます。<br />
@@ -68,6 +81,7 @@ export default {
       words: [],
       banned_words: [],
       answer: "",
+      success_message: "",
       error_message: "",
     };
   },
@@ -88,10 +102,12 @@ export default {
           ) {
             //console.log(el.name);
             el.answered = true;
+            this.success_message = this.answer;
 
             //ゲームクリア
             if (this.restWords.length == 0) {
               alert("おめでとうございます！すべての答えが出ました！");
+              this.initialize();
             } else {
               //禁止ワードの追加
               this.banWord();
@@ -101,16 +117,23 @@ export default {
 
             return true;
           } else if (el.name == this.answer && el.answered == true) {
-            this.error_message = "すでに出ている答えです。";
+            this.error_message = this.answer + "はすでに回答済みです。";
             return true;
           } else if (el.name == this.answer && el.banned == true) {
-            this.error_message = "禁止ワードが含まれています。";
+            var str = "";
+            this.banned_words.forEach((b) => {
+              if (el.kana.includes(b)) {
+                str += b + " "
+              }
+            });
+            this.error_message = "禁止ワードが含まれています。" + str;
             return true;
           } else {
             this.error_message = "お題に合っていません。";
           }
         });
       } else {
+        this.success_message = "";
         this.error_message = "";
       }
     },
@@ -124,11 +147,7 @@ export default {
       alert(str);
 
       //初期化
-      this.answers = [];
-      this.words = gojuon;
-      this.banned_words = [];
-      this.answer = "";
-      this.error_message = "";
+      this.initialize();
     },
     //文字をNG登録
     banWord() {
@@ -143,6 +162,14 @@ export default {
           el.banned = true;
         }
       });
+    },
+    initialize() {
+      this.answers = [];
+      this.words = gojuon;
+      this.banned_words = [];
+      this.answer = "";
+      this.success_message = "";
+      this.error_message = "";
     },
   },
   computed: {
