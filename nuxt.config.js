@@ -59,7 +59,7 @@ export default {
         '@nuxtjs/pwa', ['@nuxtjs/moment', ['ja']],
         '@nuxtjs/google-gtag',
     ],
-    'google-gtag': { id: 'G-TV5W32L6EE' },
+    'google-gtag': { id: 'G-D78PQ3PG72' },
     /*
      ** Axios module configuration
      ** See https://axios.nuxtjs.org/options
