@@ -1,7 +1,7 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <p class="text-h4 mb-1">山手線に口紅を</p>
+      <p class="text-h4 mb-1">{{selected_label}}</p>
       <template v-if="answers.length != 0">
         <v-text-field
           type="text"
@@ -9,10 +9,10 @@
           v-model="answer"
           @change="pushAnswer"
         />
-        <p v-if="success_message" style="color: #43a047; font-size: 24px">
+        <p v-if="success_message != ''" style="color: #B9F6CA; font-size: 24px">
           ◯{{ success_message }}
         </p>
-        <p v-if="error_message" style="color: #b71c1c; font-size: 18px">
+        <p v-if="error_message != ''" style="color: #FF8A80; font-size: 18px">
           {{ error_message }}
         </p>
         <br />
@@ -31,7 +31,7 @@
         <p>遊びたいテーマを選択してください。</p>
         <v-btn
           v-for="(t, idx) in themes"
-          @click="selectTheme(t.file)"
+          @click="selectTheme(t)"
           :key="idx"
           style="margin: 10px"
         >
@@ -76,6 +76,7 @@ export default {
         { file: todofuken, label: "日本の都道府県" },
         { file: seiza, label: "88星座" },
       ],
+      selected_label: "山手線に口紅を",
       origin_answers: [],
       answers: [],
       words: [],
@@ -85,11 +86,15 @@ export default {
       error_message: "",
     };
   },
+  mounted() {
+    this.initialize();
+  },
   methods: {
-    selectTheme(file) {
-      this.origin_answers = JSON.parse(JSON.stringify(file));
+    selectTheme(theme) {
+      this.origin_answers = JSON.parse(JSON.stringify(theme.file));
       this.answers = this.origin_answers;
       this.words = JSON.parse(JSON.stringify(gojuon));
+      this.selected_label = theme.label;
       this.banWord();
     },
     pushAnswer() {
@@ -118,6 +123,7 @@ export default {
             return true;
           } else if (el.name == this.answer && el.answered == true) {
             this.error_message = this.answer + "はすでに回答済みです。";
+            this.answer = "";
             return true;
           } else if (el.name == this.answer && el.banned == true) {
             var str = "";
@@ -126,6 +132,7 @@ export default {
                 str += b + " "
               }
             });
+            this.answer = "";
             this.error_message = "禁止ワードが含まれています。" + str;
             return true;
           } else {
@@ -170,6 +177,7 @@ export default {
       this.answer = "";
       this.success_message = "";
       this.error_message = "";
+      this.selected_label = "山手線に口紅を";
     },
   },
   computed: {
