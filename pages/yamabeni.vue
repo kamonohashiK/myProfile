@@ -2,31 +2,48 @@
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
       <h3>山手線に口紅を</h3>
-      <v-text-field
-        type="text"
-        label="解答を入力"
-        v-model="answer"
-        @change="pushAnswer"
-      />
-      <p v-if="error_message" style="color: red">{{ error_message }}</p>
-      <br />
-      <p>残り{{ restWords.length }}個</p>
-      <b>禁止ワード</b><br />
-      <span v-for="(b, idx) in banned_words" :key="idx">{{ b }}　</span>
+      <template v-if="answers.length != 0">
+        <v-text-field
+          type="text"
+          label="解答を入力"
+          v-model="answer"
+          @change="pushAnswer"
+        />
+        <p v-if="error_message" style="color: red">{{ error_message }}</p>
+        <br />
+        <p>残り{{ restWords.length }}個</p>
+        <b>禁止ワード</b><br />
+        <span v-for="(b, idx) in banned_words" :key="idx">{{ b }}　</span>
 
-      <br /><button @click="surrender">降参</button>
+        <br /><v-btn @click="surrender">降参</v-btn>
+      </template>
+      <template v-else>
+        <p>遊びたいテーマを選択してください。</p>
+        <v-btn
+          v-for="(t, idx) in themes"
+          @click="selectTheme(t.file)"
+          :key="idx"
+          style="margin:10px;"
+        >
+          {{ t.label }}
+        </v-btn>
+      </template>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import yamanote from '@/assets/json/yamanote.json'
-import todofuken from '@/assets/json/todofuken.json'
+import yamanote from "@/assets/json/yamanote.json";
+import todofuken from "@/assets/json/todofuken.json";
 
 export default {
   data() {
     return {
-      themes: todofuken,
+      themes: [
+        { file: yamanote, label: "山手線の駅名" },
+        { file: todofuken, label: "日本の都道府県" },
+      ],
+      answers: [],
       words: [
         "あ",
         "い",
@@ -114,13 +131,14 @@ export default {
       error_message: "",
     };
   },
-  mounted() {
-    this.banWord();
-  },
   methods: {
+    selectTheme(file) {
+      this.answers = file;
+      this.banWord();
+    },
     pushAnswer() {
       if (this.answer != "") {
-        this.themes.some((el) => {
+        this.answers.some((el) => {
           if (
             el.name == this.answer &&
             el.answered == false &&
@@ -150,8 +168,8 @@ export default {
     },
     surrender() {
       var str = "";
-      this.themes.forEach((e) => {
-        if ((!e.answered && !e.banned)) {
+      this.answers.forEach((e) => {
+        if (!e.answered && !e.banned) {
           str += e.name + ",";
         }
       });
@@ -164,7 +182,7 @@ export default {
       this.words.splice(rand, 1);
       this.banned_words.push(ng);
 
-      this.themes.forEach((el) => {
+      this.answers.forEach((el) => {
         if (el.kana.includes(ng)) {
           console.log(el.name);
           el.banned = true;
@@ -174,7 +192,7 @@ export default {
   },
   computed: {
     restWords() {
-      var tmp = this.themes.filter(
+      var tmp = this.answers.filter(
         (el) => el.banned == false && el.answered == false
       );
       return tmp;
