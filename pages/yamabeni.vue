@@ -1,7 +1,7 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <h3>山手線に口紅を</h3>
+      <p class="text-h4 mb-1">山手線に口紅を</p>
       <template v-if="answers.length != 0">
         <v-text-field
           type="text"
@@ -15,7 +15,7 @@
         <b>禁止ワード</b><br />
         <span v-for="(b, idx) in banned_words" :key="idx">{{ b }}　</span>
 
-        <br /><v-btn @click="surrender">降参</v-btn>
+        <br /><v-btn style="margin: 20px" @click="surrender">降参</v-btn>
       </template>
       <template v-else>
         <p>遊びたいテーマを選択してください。</p>
@@ -28,6 +28,23 @@
           {{ t.label }}
         </v-btn>
       </template>
+
+      <p class="text-h5 mb-3">遊び方</p>
+      <p class="text-justify">
+        「山手線ゲーム」と筒井康隆の小説「<a target="_blank" href="https://www.amazon.co.jp/gp/product/B07CMZZNPW/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B07CMZZNPW&linkCode=as2&tag=kamonohashi0f-22&linkId=00260c4d6b008e43036e7223b3d3025d">残像に口紅を</a>」を組み合わせたオリジナルゲームです。
+        <br /><br />
+        1. 遊びたいテーマを選択してください。
+        <br /><br />
+        2. ゲームが進むたびに「禁止ワード」が1つ追加されます。<br />
+        「お題に合っている」かつ「禁止ワードが含まれない」答えを回答欄に入力してください。<br />
+        (例)「山手線の駅名」で「あ」が禁止　→「秋葉原」以外の29駅からひとつを回答<br />
+        一度回答に使った言葉を再度使うことはできません。
+        <br /><br />
+        3.
+        2を繰り返し、お題に沿った答えを全て出すことができればクリアとなります。<br />
+        ※「降参」ボタンを押すと正解となる答えの一覧を表示することができます。<br />
+        ひとりで挑戦してみたり、パーティゲーム等でご活用いただけると幸いです。
+      </p>
     </v-flex>
   </v-layout>
 </template>

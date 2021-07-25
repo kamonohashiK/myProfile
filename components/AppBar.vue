@@ -52,6 +52,11 @@ export default {
           title: "趣味",
           to: "/#hobbies",
         },
+        {
+          icon: "mdi-gamepad-variant-outline",
+          title: "「山手線に口紅を」",
+          to: "/yamabeni",
+        },
       ],
       title: "kamoy4.com",
     };
