@@ -11,8 +11,8 @@
       <p v-if="error_message" style="color: red">{{ error_message }}</p>
       <br />
       <p>残り{{ restWords.length }}個</p>
-      <b>禁止ワード</b>
-      <span v-for="b in banned_words">{{ b }}　</span>
+      <b>禁止ワード</b><br />
+      <span v-for="(b, idx) in banned_words" :key="idx">{{ b }}　</span>
 
       <br /><button @click="surrender">降参</button>
     </v-flex>
@@ -20,71 +20,12 @@
 </template>
 
 <script>
+import yamanote from '@/assets/json/yamanote.json'
+
 export default {
   data() {
     return {
-      themes: [
-        { name: "東京", kana: "とうきょう", answered: false, banned: false },
-        { name: "神田", kana: "かんだ", answered: false, banned: false },
-        { name: "秋葉原", kana: "あきはばら", answered: false, banned: false },
-        { name: "御徒町", kana: "おかちまち", answered: false, banned: false },
-        { name: "上野", kana: "うえの", answered: false, banned: false },
-        { name: "鶯谷", kana: "うぐいすだに", answered: false, banned: false },
-        { name: "日暮里", kana: "にっぽり", answered: false, banned: false },
-        {
-          name: "西日暮里",
-          kana: "にしにっぽり",
-          answered: false,
-          banned: false,
-        },
-        { name: "田端", kana: "たばた", answered: false, banned: false },
-        { name: "駒込", kana: "こまごめ", answered: false, banned: false },
-        { name: "巣鴨", kana: "すがも", answered: false, banned: false },
-        { name: "大塚", kana: "おおつか", answered: false, banned: false },
-        { name: "池袋", kana: "いけぶくろ", answered: false, banned: false },
-        { name: "目白", kana: "めじろ", answered: false, banned: false },
-        {
-          name: "高田馬場",
-          kana: "たかだのばば",
-          answered: false,
-          banned: false,
-        },
-        {
-          name: "新大久保",
-          kana: "しんおおくぼ",
-          answered: false,
-          banned: false,
-        },
-        { name: "新宿", kana: "しんじゅく", answered: false, banned: false },
-        { name: "代々木", kana: "よよぎ", answered: false, banned: false },
-        { name: "原宿", kana: "はらじゅく", answered: false, banned: false },
-        { name: "渋谷", kana: "しぶや", answered: false, banned: false },
-        { name: "恵比寿", kana: "えびす", answered: false, banned: false },
-        { name: "目黒", kana: "めぐろ", answered: false, banned: false },
-        { name: "五反田", kana: "ごたんだ", answered: false, banned: false },
-        { name: "大崎", kana: "おおさき", answered: false, banned: false },
-        { name: "品川", kana: "しながわ", answered: false, banned: false },
-        {
-          name: "高輪ゲートウェイ",
-          kana: "たかなわげーとうぇい",
-          answered: false,
-          banned: false,
-        },
-        { name: "田町", kana: "たまち", answered: false, banned: false },
-        {
-          name: "浜松町",
-          kana: "はままつちょう",
-          answered: false,
-          banned: false,
-        },
-        { name: "新橋", kana: "しんばし", answered: false, banned: false },
-        {
-          name: "有楽町",
-          kana: "ゆうらくちょう",
-          answered: false,
-          banned: false,
-        },
-      ],
+      themes: yamanote,
       words: [
         "あ",
         "い",
@@ -203,13 +144,15 @@ export default {
           }
         });
       } else {
-          this.error_message = "";
+        this.error_message = "";
       }
     },
     surrender() {
       var str = "";
       this.themes.forEach((e) => {
-        str += e.name + ",";
+        if ((!e.answered && !e.banned)) {
+          str += e.name + ",";
+        }
       });
       alert(str);
     },
