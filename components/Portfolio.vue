@@ -34,13 +34,13 @@ export default {
       items: [
         {
           title: "しまの時刻表",
-          description: "離島行き航路の時刻表・運賃を気軽に検索できるWebサイト",
+          description: "離島行き航路の時刻表・運賃を気軽に検索できるWebサイト(更新停止)",
           image: "/jikoku.png",
           link: "https://shimajikoku.com",
         },
         {
           title: "ITイベント検索Bot",
-          description: "IT系イベントを素早く検索できるLINE Bot",
+          description: "IT系イベントを素早く検索できるLINE Bot(更新停止)",
           image: "/it-bot.png",
           link: "https://lin.ee/BTr2iqB"
         }
