@@ -23,7 +23,7 @@
           v-for="(t, idx) in themes"
           @click="selectTheme(t.file)"
           :key="idx"
-          style="margin:10px;"
+          style="margin: 10px"
         >
           {{ t.label }}
         </v-btn>
@@ -35,6 +35,7 @@
 <script>
 import yamanote from "@/assets/json/yamanote.json";
 import todofuken from "@/assets/json/todofuken.json";
+import gojuon from "@/assets/json/gojuon.json";
 
 export default {
   data() {
@@ -43,89 +44,9 @@ export default {
         { file: yamanote, label: "山手線の駅名" },
         { file: todofuken, label: "日本の都道府県" },
       ],
+      origin_answers: [],
       answers: [],
-      words: [
-        "あ",
-        "い",
-        "う",
-        "え",
-        "お",
-        "ぁ",
-        "ぃ",
-        "ぅ",
-        "ぇ",
-        "ぉ",
-        "か",
-        "き",
-        "く",
-        "け",
-        "こ",
-        "が",
-        "ぎ",
-        "ぐ",
-        "げ",
-        "ご",
-        "さ",
-        "し",
-        "す",
-        "せ",
-        "そ",
-        "ざ",
-        "じ",
-        "ず",
-        "ぜ",
-        "ぞ",
-        "た",
-        "ち",
-        "つ",
-        "て",
-        "と",
-        "っ",
-        "だ",
-        "ぢ",
-        "づ",
-        "で",
-        "ど",
-        "な",
-        "に",
-        "ぬ",
-        "ね",
-        "の",
-        "は",
-        "ひ",
-        "ふ",
-        "へ",
-        "ほ",
-        "ば",
-        "び",
-        "ぶ",
-        "べ",
-        "ぼ",
-        "ぱ",
-        "ぴ",
-        "ぷ",
-        "ぺ",
-        "ぽ",
-        "ま",
-        "み",
-        "む",
-        "め",
-        "も",
-        "や",
-        "ゆ",
-        "よ",
-        "ゃ",
-        "ゅ",
-        "ょ",
-        "ら",
-        "り",
-        "る",
-        "れ",
-        "ろ",
-        "わ",
-        "を",
-        "ん",
-      ],
+      words: [],
       banned_words: [],
       answer: "",
       error_message: "",
@@ -133,7 +54,9 @@ export default {
   },
   methods: {
     selectTheme(file) {
-      this.answers = file;
+      this.origin_answers = JSON.parse(JSON.stringify(file));
+      this.answers = this.origin_answers;
+      this.words = JSON.parse(JSON.stringify(gojuon));
       this.banWord();
     },
     pushAnswer() {
@@ -144,13 +67,19 @@ export default {
             el.answered == false &&
             el.banned == false
           ) {
-            console.log(el.name);
+            //console.log(el.name);
             el.answered = true;
 
-            //禁止ワードの追加
-            this.banWord();
-            this.answer = "";
-            this.error_message = "";
+            //ゲームクリア
+            if (this.restWords.length == 0) {
+              alert("おめでとうございます！すべての答えが出ました！");
+            } else {
+              //禁止ワードの追加
+              this.banWord();
+              this.answer = "";
+              this.error_message = "";
+            }
+
             return true;
           } else if (el.name == this.answer && el.answered == true) {
             this.error_message = "すでに出ている答えです。";
@@ -174,6 +103,13 @@ export default {
         }
       });
       alert(str);
+
+      //初期化
+      this.answers = [];
+      this.words = gojuon;
+      this.banned_words = [];
+      this.answer = "";
+      this.error_message = "";
     },
     //文字をNG登録
     banWord() {
@@ -184,7 +120,7 @@ export default {
 
       this.answers.forEach((el) => {
         if (el.kana.includes(ng)) {
-          console.log(el.name);
+          //console.log(el.name);
           el.banned = true;
         }
       });
