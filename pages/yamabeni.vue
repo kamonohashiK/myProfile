@@ -75,6 +75,7 @@
 import yamanote from "@/assets/json/yamanote.json";
 import todofuken from "@/assets/json/todofuken.json";
 import seiza from "@/assets/json/seiza.json";
+import kencho from "@/assets/json/kencho.json";
 import gojuon from "@/assets/json/gojuon.json";
 
 export default {
@@ -83,6 +84,7 @@ export default {
       themes: [
         { file: yamanote, label: "山手線の駅名" },
         { file: todofuken, label: "日本の都道府県" },
+        { file: kencho, label: "都道府県の県庁所在地" },
         { file: seiza, label: "88星座" },
       ],
       selected_label: "山手線に口紅を",
