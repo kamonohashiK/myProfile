@@ -1,7 +1,10 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <p class="text-h4 mb-1">{{selected_label}}</p>
+      <p class="text-h5 mb-1">
+        {{ selected_label }}
+        <span v-if="answers.length != 0">(残り{{ restWords.length }}個)</span>
+      </p>
       <template v-if="answers.length != 0">
         <v-text-field
           type="text"
@@ -9,23 +12,23 @@
           v-model="answer"
           @change="pushAnswer"
         />
-        <p v-if="success_message != ''" style="color: #B9F6CA; font-size: 24px">
+        <p v-if="success_message != ''" style="color: #b9f6ca; font-size: 18px">
           ◯{{ success_message }}
         </p>
-        <p v-if="error_message != ''" style="color: #FF8A80; font-size: 18px">
+        <p v-if="error_message != ''" style="color: #ff8a80; font-size: 18px">
           {{ error_message }}
         </p>
-        <br />
-        <p>残り{{ restWords.length }}個</p>
         <b>禁止ワード</b><br />
         <span
           v-for="(b, idx) in banned_words"
           :key="idx"
-          style="font-size: 24px"
+          style="font-size: 20px"
           >{{ b }}　</span
         >
-
-        <br /><v-btn style="margin: 20px" @click="surrender">降参</v-btn>
+        <br />
+        <v-btn style="margin: 20px" @click="surrender" color="error"
+          >降参</v-btn
+        >
       </template>
       <template v-else>
         <p>遊びたいテーマを選択してください。</p>
@@ -34,12 +37,13 @@
           @click="selectTheme(t)"
           :key="idx"
           style="margin: 10px"
+          color="primary"
         >
           {{ t.label }}
         </v-btn>
       </template>
 
-      <p class="text-h5 mb-3">遊び方</p>
+      <p class="text-h6 mb-3">遊び方</p>
       <p class="text-justify">
         「山手線ゲーム」と筒井康隆の小説「<a
           target="_blank"
@@ -129,7 +133,7 @@ export default {
             var str = "";
             this.banned_words.forEach((b) => {
               if (el.kana.includes(b)) {
-                str += b + " "
+                str += b + " ";
               }
             });
             this.answer = "";
