@@ -18,7 +18,7 @@
         <p v-if="error_message != ''" style="color: #ff8a80; font-size: 18px">
           {{ error_message }}
         </p>
-        <b>禁止ワード</b><br />
+        <b>禁止文字</b><br />
         <span
           v-for="(b, idx) in banned_words"
           :key="idx"
@@ -30,7 +30,7 @@
           >降参</v-btn
         >
         <ul v-for="(c, idx) in captions" :key="idx">
-          <li>{{c}}</li>
+          <li>{{ c }}</li>
         </ul>
       </template>
       <template v-else>
@@ -56,8 +56,8 @@
           >」を組み合わせたオリジナルゲームです。 <br /><br />
           1. 遊びたいテーマを選択してください。
           <br /><br />
-          2. ゲームが進むたびに「禁止ワード」が1つ追加されます。<br />
-          「お題に合っている」かつ「禁止ワードが含まれない」答えを回答欄に入力してください。<br />
+          2. ゲームが進むたびに「禁止文字」が1つ追加されます。<br />
+          「お題に合っている」かつ「禁止文字が含まれない」答えを回答欄に入力してください。<br />
           (例)「山手線の駅名」で「あ」が禁止　→「秋葉原」以外の29駅からひとつを回答<br />
           一度回答した答えを再度使うことはできません。
           <br /><br />
@@ -65,8 +65,11 @@
           (例)「ゆ」が禁止の時の「ゅ」・「つ」が禁止の時の「っ」・「は」が禁止の時の「ば」「ぱ」<br />
           上記は（別途禁止されていない限り）すべて利用可能です。
           <br /><br />
-          3.
-          2を繰り返し、お題に沿った答えを全て出すことができればクリアとなります。<br />
+          棒引き(ー)は禁止文字には含まれません。<br />
+          また、読みとなる母音が禁止文字になっていても、回答に使うことができます。<br />
+          (例)「山手線の駅名」で「え」が禁止　→「高輪ゲートウェイ」は回答可
+          <br /><br />
+          3. 2を繰り返し、お題に沿った答えを全て出すことができればクリアとなります。<br />
           ※「降参」ボタンを押すと正解となる答えの一覧を表示することができます。<br />
           ひとりで挑戦してみたり、パーティゲーム等でご活用いただけると幸いです。
         </p>
@@ -84,6 +87,7 @@ import todofuken from "@/assets/json/todofuken.json";
 import seiza from "@/assets/json/seiza.json";
 import kencho from "@/assets/json/kencho.json";
 import primeminister from "@/assets/json/primeminister.json";
+import element from "@/assets/json/element.json";
 import gojuon from "@/assets/json/gojuon.json";
 
 export default {
@@ -91,10 +95,26 @@ export default {
     return {
       themes: [
         { file: yamanote, label: "山手線の駅名", captions: ["※「駅」は除く"] },
-        { file: todofuken, label: "日本の都道府県", captions: ["※「都」「府」「県」は除く"] },
+        {
+          file: todofuken,
+          label: "日本の都道府県",
+          captions: ["※「都」「府」「県」は除く"],
+        },
         { file: kencho, label: "都道府県の県庁所在地", captions: [] },
-        { file: seiza, label: "88星座", captions: ["※「座」を除く、ひらがな・カタカナのみ"] },
-        { file: primeminister, label: "日本の歴代総理大臣", captions: ["※表記は新字体のみ", "(例)山縣有朋→山県有朋、東條英機→東条英機"] },
+        {
+          file: seiza,
+          label: "88星座",
+          captions: ["※「座」を除く、ひらがな・カタカナのみ"],
+        },
+        {
+          file: primeminister,
+          label: "日本の歴代総理大臣",
+          captions: [
+            "※表記は新字体のみ",
+            "(例)山縣有朋→山県有朋、東條英機→東条英機",
+          ],
+        },
+        { file: element, label: "元素", captions: [] },
       ],
       selected_label: "山手線に口紅を",
       origin_answers: [],
@@ -136,7 +156,7 @@ export default {
               alert("おめでとうございます！すべての答えが出ました！");
               this.initialize();
             } else {
-              //禁止ワードの追加
+              //禁止文字の追加
               this.banWord();
               this.answer = "";
               this.error_message = "";
@@ -155,7 +175,7 @@ export default {
               }
             });
             this.answer = "";
-            this.error_message = "禁止ワードが含まれています。" + str;
+            this.error_message = "禁止文字が含まれています。" + str;
             return true;
           } else {
             this.error_message = "お題に合っていません。";
