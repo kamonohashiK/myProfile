@@ -29,6 +29,9 @@
         <v-btn style="margin: 10px" @click="surrender" color="error"
           >降参</v-btn
         >
+        <ul v-for="(c, idx) in captions" :key="idx">
+          <li>{{c}}</li>
+        </ul>
       </template>
       <template v-else>
         <p>遊びたいテーマを選択してください。</p>
@@ -80,16 +83,18 @@ import yamanote from "@/assets/json/yamanote.json";
 import todofuken from "@/assets/json/todofuken.json";
 import seiza from "@/assets/json/seiza.json";
 import kencho from "@/assets/json/kencho.json";
+import primeminister from "@/assets/json/primeminister.json";
 import gojuon from "@/assets/json/gojuon.json";
 
 export default {
   data() {
     return {
       themes: [
-        { file: yamanote, label: "山手線の駅名" },
-        { file: todofuken, label: "日本の都道府県" },
-        { file: kencho, label: "都道府県の県庁所在地" },
-        { file: seiza, label: "88星座" },
+        { file: yamanote, label: "山手線の駅名", captions: ["※「駅」は除く"] },
+        { file: todofuken, label: "日本の都道府県", captions: ["※「都」「府」「県」は除く"] },
+        { file: kencho, label: "都道府県の県庁所在地", captions: [] },
+        { file: seiza, label: "88星座", captions: ["※「座」を除く、ひらがな・カタカナのみ"] },
+        { file: primeminister, label: "日本の歴代総理大臣", captions: ["※表記は新字体のみ", "(例)山縣有朋→山県有朋、東條英機→東条英機"] },
       ],
       selected_label: "山手線に口紅を",
       origin_answers: [],
@@ -99,6 +104,7 @@ export default {
       answer: "",
       success_message: "",
       error_message: "",
+      captions: [],
     };
   },
   mounted() {
@@ -110,6 +116,7 @@ export default {
       this.answers = this.origin_answers;
       this.words = JSON.parse(JSON.stringify(gojuon));
       this.selected_label = theme.label;
+      this.captions = theme.captions;
       this.banWord();
     },
     pushAnswer() {
@@ -193,6 +200,7 @@ export default {
       this.success_message = "";
       this.error_message = "";
       this.selected_label = "山手線に口紅を";
+      this.captions = [];
     },
   },
   computed: {
