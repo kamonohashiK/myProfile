@@ -1,7 +1,7 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <p class="text-h5 mb-1">
+      <p class="text-h6 mb-1">
         {{ selected_label }}
         <span v-if="answers.length != 0">({{ count }}( {{ lost }} ))</span>
       </p>
