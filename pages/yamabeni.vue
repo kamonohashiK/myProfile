@@ -3,7 +3,7 @@
     <v-flex xs12 sm8 md6>
       <p class="text-h5 mb-1">
         {{ selected_label }}
-        <span v-if="answers.length != 0">(残り{{ restWords.length }}個)</span>
+        <span v-if="answers.length != 0">({{ count }}( {{ lost }} ))</span>
       </p>
       <template v-if="answers.length != 0">
         <v-text-field
@@ -119,7 +119,7 @@ export default {
             "(例)山縣有朋→山県有朋、東條英機→東条英機",
           ],
         },
-        { file: element, label: "元素", captions: [] },
+        { file: element, label: "元素の名前", captions: [] },
       ],
       selected_label: "山手線に口紅を",
       origin_answers: [],
@@ -130,6 +130,8 @@ export default {
       success_message: "",
       error_message: "",
       captions: [],
+      count: 0,
+      lost: 0,
     };
   },
   mounted() {
@@ -142,6 +144,7 @@ export default {
       this.words = JSON.parse(JSON.stringify(gojuon));
       this.selected_label = theme.label;
       this.captions = theme.captions;
+      this.count = theme.file.length;
       this.banWord();
     },
     pushAnswer() {
@@ -163,6 +166,7 @@ export default {
             } else {
               //禁止文字の追加
               this.banWord();
+              this.lost -= 1;
               this.answer = "";
               this.error_message = "";
             }
@@ -205,6 +209,7 @@ export default {
     },
     //文字をNG登録
     banWord() {
+      var lost = 0;
       var rand = Math.floor(Math.random() * this.words.length);
       var ng = this.words[rand];
       this.words.splice(rand, 1);
@@ -214,8 +219,11 @@ export default {
         if (el.kana.includes(ng)) {
           //console.log(el.name);
           el.banned = true;
+          lost -= 1;
         }
       });
+      this.count = this.restWords.length;
+      this.lost = lost;
     },
     initialize() {
       this.answers = [];
