@@ -4,18 +4,22 @@ require('dotenv').config();
 const { CMS_URL, CMS_API_KEY, } = process.env
 
 export default {
-    mode: 'spa',
+    ssr: false,
+    target: 'static',
     /*
      ** Headers of the page
      */
     head: {
+        htmlAttrs: {
+            lang: 'ja'
+        },
         title: 'かも屋〜門屋弘毅のポートフォリオ〜',
         meta: [{
                 charset: 'utf-8'
             },
             {
                 name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
+                content: 'width=device-width, initial-scale=1',
             },
             {
                 hid: 'description',
@@ -95,5 +99,10 @@ export default {
     env: {
         CMS_URL,
         CMS_API_KEY,
-    }
+    },
+    pwa: {
+        manifest: {
+            lang: 'ja',
+        },
+    },
 }
