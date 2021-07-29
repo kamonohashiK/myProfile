@@ -21,7 +21,7 @@
         <b>禁止文字</b><br />
         <span
           v-for="(b, idx) in banned_words"
-          :key="idx"
+          :key="`first-${idx}`"
           style="font-size: 20px"
           >{{ b }}　</span
         >
@@ -29,7 +29,7 @@
         <v-btn style="margin: 10px" @click="surrender" color="error"
           >降参</v-btn
         >
-        <ul v-for="(c, idx) in captions" :key="idx">
+        <ul v-for="(c, idx) in captions" :key="`second-${idx}`">
           <li>{{ c }}</li>
         </ul>
       </template>
