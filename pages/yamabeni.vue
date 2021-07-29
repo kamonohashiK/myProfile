@@ -99,17 +99,17 @@ export default {
         {
           file: todofuken,
           label: "日本の都道府県",
-          captions: ["※「都」「府」「県」は除く"],
+          captions: ["※「都」「府」「県」は省いて回答してください。"],
         },
         {
           file: kencho,
           label: "都道府県の県庁所在地",
-          captions: ["※「市」「区」は除く"],
+          captions: ["※「市」「区」は省いて回答してください。"],
         },
         {
           file: seiza,
           label: "88星座",
-          captions: ["※「座」を除く、ひらがな・カタカナのみ"],
+          captions: ["※「座」は省いて回答してください。", "ひらがな・カタカナのみ"],
         },
         {
           file: primeminister,
