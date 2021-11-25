@@ -57,6 +57,11 @@ export default {
           title: "「山手線に口紅を」",
           to: "/yamabeni",
         },
+        {
+          icon: "mdi-gamepad-variant-outline",
+          title: "Quiz High&Low",
+          to: "/quiz_hal",
+        },
       ],
       title: "kamoy4.com",
     };
