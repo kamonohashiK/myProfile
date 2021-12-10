@@ -6,7 +6,7 @@
     <v-img
       height="300"
       width="520"
-      src="quiz-hal-img.png"
+      src="/quiz-hal-img.png"
     ></v-img>
 
     <v-col cols="12" sm="6">

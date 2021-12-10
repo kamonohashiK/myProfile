@@ -35,7 +35,7 @@ export default {
         {
           title: "Quiz High&Low",
           description: "左右のカードの大小を知識で当てるアプリゲーム",
-          image: "/it-bot.png",
+          image: "/quiz-hal-img.png",
           link: "/quiz_hal",
           inner: true,
         },
