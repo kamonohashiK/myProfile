@@ -26,12 +26,12 @@ export default {
       skills: [
         {
           title: "PHP",
-          description: "Laravel, CakePHP等を用いた<br>Webアプリの設計・開発",
+          description: "Laravel, CakePHP等による<br>Webアプリの設計・開発",
           rating: 2,
         },
         {
           title: "Vue.js",
-          description: "Nuxt.jsを用いた<br>SPAの設計・開発",
+          description: "Nuxt.jsによる<br>SPAの設計・開発",
           rating: 2,
         },
         {
@@ -42,7 +42,19 @@ export default {
         {
           title: "AWS",
           description:
-            "Lambda, DynamoDB等を用いた<br>サーバレスアプリの設計・開発",
+            "Lambda, DynamoDBを用いた<br>Webアプリの設計・開発",
+          rating: 1,
+        },
+        {
+          title: "Flutter",
+          description:
+            "iOS/Android<br>両対応のアプリ開発",
+          rating: 1,
+        },
+        {
+          title: "Firebase",
+          description:
+            "スマホアプリ・Webの<br>簡易的なバックエンド開発",
           rating: 1,
         },
       ],

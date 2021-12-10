@@ -4,7 +4,7 @@
     <v-row>
       <v-col cols="12" sm="6" v-for="item in items" :key="item.title">
         <v-card class="mx-auto" max-width="344" outlined>
-          <a :href="item.link" target="_blank" rel="noopener noreferrer">
+          <a :href="item.link" :target="!item.inner" rel="noopener noreferrer">
           <v-img
             height="200"
             width="344"
@@ -33,17 +33,19 @@ export default {
     return {
       items: [
         {
+          title: "Quiz High&Low",
+          description: "左右のカードの大小を知識で当てるアプリゲーム",
+          image: "/it-bot.png",
+          link: "/quiz_hal",
+          inner: true,
+        },
+        {
           title: "しまの時刻表",
           description: "離島行き航路の時刻表・運賃を気軽に検索できるWebサイト(更新停止)",
           image: "/jikoku.png",
           link: "https://shimajikoku.com",
+          inner: false,
         },
-        {
-          title: "ITイベント検索Bot",
-          description: "IT系イベントを素早く検索できるLINE Bot(更新停止)",
-          image: "/it-bot.png",
-          link: "https://lin.ee/BTr2iqB"
-        }
       ]
     };
   }
