@@ -9,12 +9,8 @@
       src="/quiz-hal-img.png"
     ></v-img>
 
-    <v-col cols="12" sm="6">
-      <a href="https://play.google.com/store/apps/details?id=com.kamoya86.quiz_hal" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-        <v-btn block>
-          Android
-        </v-btn>
-      </a>
+    <v-col cols="12">
+      <a href='https://play.google.com/store/apps/details?id=com.kamoya86.quiz_hal&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank"><img alt='Google Play で手に入れよう' src='https://play.google.com/intl/us-en/badges/static/images/badges/ja_badge_web_generic.png' style="height:160px;"></a>
     </v-col>
 
     <span style="margin:20px;"></span>
