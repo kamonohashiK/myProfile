@@ -36,7 +36,7 @@ export default {
         },
         {
           title: "Python",
-          description: "サーバレスアプリの<br>関数部分等で使用",
+          description: "簡易的な業務用ツール、<br>スクレイピングツールの開発",
           rating: 2,
         },
         {
@@ -46,15 +46,27 @@ export default {
           rating: 1,
         },
         {
-          title: "Flutter",
-          description:
-            "iOS/Android<br>両対応のアプリ開発",
-          rating: 1,
-        },
-        {
           title: "Firebase",
           description:
             "スマホアプリ・Webの<br>簡易的なバックエンド開発",
+          rating: 1,
+        },
+        {
+          title: "React.js",
+          description:
+            "Next.jsによる<br>SPAの設計・開発",
+          rating: 1,
+        },
+        {
+          title: "Go",
+          description:
+            "CLIツール、<br>Webサーバの設計・開発",
+          rating: 1,
+        },
+         {
+          title: "Flutter",
+          description:
+            "iOS/Android<br>両対応のアプリ開発",
           rating: 1,
         },
       ],

@@ -37,8 +37,8 @@ export default {
         },
         {
           title: "バイク",
-          description: "31才で普通二輪免許を取得。今の愛車はスーパーカブ110。",
-          image: "/cub.jpg"
+          description: "23年年初に大型二輪免許を取得。今の愛車はホンダ・CBR400R。",
+          image: "/bike.jpeg"
         },
         {
           title: "洋楽ロック",
